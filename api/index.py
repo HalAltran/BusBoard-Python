@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
-        return index()
+        app.run()
 
 
 @app.route("/")
