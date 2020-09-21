@@ -1,7 +1,7 @@
 import requests
 import json
 
-from BusStop import BusStop
+from api.BusStop import BusStop
 
 NEAREST_BUSES_REQUEST = 'https://transportapi.com/v3/uk/bus/stop/%s/live.json?app_id=%s&app_key=%s&group=route&nextbuses=yes'
 GET_STOP_CODE_REQUEST = "https://transportapi.com/v3/uk/bus/stops/near.json?app_id=%s&app_key=%s&lat=%f&lon=%f"

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from BusBoard import BusBoard
+from api.BusBoard import BusBoard
 
 app = Flask(__name__)
 
