@@ -1,6 +1,7 @@
 import requests
 import json
 from BusStop import BusStop
+import os
 
 NEAREST_BUSES_REQUEST = 'https://transportapi.com/v3/uk/bus/stop/%s/live.json'
 GET_STOP_CODE_REQUEST = "https://transportapi.com/v3/uk/bus/stops/near.json"
@@ -10,7 +11,8 @@ POSTCODES_REQUEST = "https://api.postcodes.io/postcodes/%s"
 class BusBoard:
     def __init__(self, postcode, max_distance):
         self.max_distance = int(max_distance)
-        self.app_key, self.app_id = self.get_key_and_id()
+        self.app_key = os.environ['app_key']
+        self.app_id = os.environ['app_id']
         self.postcode = postcode
         self.errors = []
         self.bus_stops = self.get_stops_from_postcode()
@@ -50,12 +52,6 @@ class BusBoard:
         if not bus_stop_response.ok:
             raise ValueError
         return bus_stop_dict["stops"]
-
-    @staticmethod
-    def get_key_and_id():
-        with open("keys/keys.json") as json_file:
-            json_data = json.load(json_file)
-            return json_data["app_key"], json_data["app_id"]
 
     def get_location_info_from_postcode(self):
         postcode_response = requests.get(POSTCODES_REQUEST % self.postcode)
