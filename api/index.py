@@ -1,13 +1,7 @@
-from http.server import BaseHTTPRequestHandler
 from flask import Flask, render_template, request
 from api.BusBoard import BusBoard
 
 app = Flask(__name__)
-
-
-class handler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        app.run()
 
 
 @app.route("/")
