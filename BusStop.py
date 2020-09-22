@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from api.Bus import Bus
+from Bus import Bus
 
 
 class BusStop:
